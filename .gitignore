@@ -1,0 +1,6 @@
+env
+*.pyc
+*.sw[pco]
+.AppleDouble
+.DS_Store
+local_setting.py
