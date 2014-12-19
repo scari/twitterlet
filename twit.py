@@ -10,11 +10,16 @@ TWITTER_ACCOUNT = {
     'consumer_secret': SCARIBOT_CONSUMER_SECRET,
     'consumer_key': SCARIBOT_CONSUMER_KEY
 }
-
+MAX_LEN = 140
 t = twitter.Api(**TWITTER_ACCOUNT)
 
 def dm(screen_name, message):
     if screen_name and message:
+        if len(message) > MAX_LEN:
+            head = message[:MAX_LEN]
+            message = message[MAX_LEN:]
+            t.PostDirectMessage(screen_name=screen_name, text=head)
+
         return t.PostDirectMessage(screen_name=screen_name, text=message)
 
 #print(t.VerifyCredentials())
